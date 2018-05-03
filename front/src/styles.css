@@ -1,0 +1,5 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~ngx-toastr/toastr.css";
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}

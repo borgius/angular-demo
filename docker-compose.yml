@@ -1,0 +1,41 @@
+version: '3'
+services:
+  back:
+    # build: .
+    image: borgius/demo-back
+    environment:
+      #- DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=postgres://postgres:postgres@pg/demo
+      - DB_CLIENT=pg
+    volumes:
+      - .env.docker:/usr/src/app/.env
+      - ./src/knexfile.js:/usr/src/app/dist/knexfile.js
+      - ./package.json:/usr/src/app/package.json
+    ports:
+      - "8080:8080"
+    entrypoint: /bin/sh
+    command: -c "sleep 5s && npm run migrate && npm run seed && npm run start"
+    depends_on:
+      - pg
+    links:
+      - pg
+  front:
+    # build: .
+    image: borgius/demo-front
+    ports:
+      - "80:80"
+    depends_on:
+      - back
+    links:
+      - back
+  pg:
+    image: postgres:alpine
+    tmpfs:
+      - /tmp
+      - /var/run/postgresql
+    ports:
+      - "127.0.0.1:5432:5432" # you can override it via docker-compose.override.yml
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres

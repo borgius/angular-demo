@@ -1,0 +1,9 @@
+.logo {
+  width: 150px;
+  filter: grayscale(00%);
+}
+
+.mat-button.active {
+  text-decoration: underline;
+  color: rgb(255, 238, 0);
+}

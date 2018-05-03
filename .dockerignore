@@ -1,0 +1,14 @@
+.git
+.env*
+.editorconfig
+.gitignore
+LICENSE.md
+README.md
+node_modules
+front/node_modules
+output
+logs
+Dockerfile
+Dockerfile.dev
+dist
+front/dist

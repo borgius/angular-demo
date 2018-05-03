@@ -1,0 +1,30 @@
+require('babel-register');
+require('dotenv').config({ path: `${__dirname}/../.env.${process.env.NODE_ENV}` });
+
+/**
+ * Database configuration.
+ */
+module.exports = {
+  client: process.env.DB_CLIENT || 'pg',
+  connection: process.env.DATABASE_URL || {
+    port: process.env.DB_PORT,
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database:
+      process.env.NODE_ENV === 'test'
+        ? process.env.TEST_DB_NAME
+        : process.env.DB_NAME,
+    charset: 'utf8',
+    timezone: 'UTC'
+  },
+  migrations: {
+    tableName: 'migrations',
+    directory: './migrations',
+    stub: './stubs/migration.stub'
+  },
+  seeds: {
+    directory: './seeds',
+    stub: './stubs/seed.stub'
+  }
+};

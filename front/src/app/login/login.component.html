@@ -1,0 +1,28 @@
+<div layout="row" layout-align="center center" class="login">
+  <mat-card flex=50>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+      <form class="login-form">
+        <table class="login-full-width" cellspacing="0" width="100%">
+          <tr>
+            <td>
+              <mat-form-field class="login-full-width">
+                <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="login-full-width">
+                <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions align="center">
+      <button mat-raised-button align="right" (click)="login()" color="primary">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

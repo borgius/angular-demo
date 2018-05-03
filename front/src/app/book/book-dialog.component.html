@@ -1,0 +1,25 @@
+<div>
+  <form [formGroup]="form" class="book-form">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Title" formControlName="title">
+      <mat-error>{{ lastError('title') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Author" formControlName="author">
+      <mat-error>{{ lastError('author') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="ISBN" formControlName="isbn">
+      <mat-error>{{ lastError('isbn') }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Year" formControlName="year">
+      <mat-error>{{ lastError('year') }}</mat-error>
+    </mat-form-field>
+    <mat-toolbar>
+      <span class="example-fill-remaining-space"></span>
+      <button mat-button [routerLink]="['/books']">Cancel</button>
+      <button mat-button (click)="onSubmit()">Save</button>
+    </mat-toolbar>
+  </form>
+</div>

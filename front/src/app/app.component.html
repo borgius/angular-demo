@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>
+      <img class="logo" src="assets/angular-card.png">
+    </span>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button *ngIf="isLoggedIn()" [routerLink]="['/books']" routerLinkActive="active">Books</button>
+    <button mat-button *ngIf="isLoggedIn()" [routerLink]="['/login']" [queryParams]="{ logout: true }">LogOut</button>
+    <button mat-button *ngIf="!isLoggedIn()" [routerLink]="['/']" routerLinkActive="active">Login</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
