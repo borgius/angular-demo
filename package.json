@@ -15,7 +15,7 @@
     "rollback": "knex migrate:rollback --knexfile src/knexfile.js",
     "make:seeder": "knex seed:make --knexfile src/knexfile.js",
     "make:migration": "knex migrate:make --knexfile src/knexfile.js",
-    "__pretest": "NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
+    "pretest": "NODE_ENV=test npm run migrate && NODE_ENV=test npm run seed",
     "test": "NODE_ENV=test mocha --recursive --require babel-register test",
     "prettify":
       "prettier --single-quote --print-width 120 --write \"src/**/*.js\" \"test/**/*.js\"",

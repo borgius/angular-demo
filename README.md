@@ -1,40 +1,45 @@
- [//]: <> (https://github.com/mesaugat/express-api-es6-starter)
-
 ## Setup
 
 Clone the repository, install the dependencies and get started right away.
 
-    $ git clone git@github.com:borgius/angular-demo.git <application-name>
-    $ cd <application-name>
-    $ rm -rf .git
-    $ yarn   # or npm install
+    $ git clone git@github.com:borgius/angular-demo.git
+    $ cd angular-demo
+    $ npm install
+    $ cd front
+    $ npm install
 
 Make a copy of `.env.example` as `.env` and update your application details and database credentials. Now, run the migrations and seed the database.
 
-    $ createdb mapp-dev 
+    $ createdb angular_demo 
+    $ createdb angular_demo_test 
     $ yarn migrate
     $ yarn seed
 
 Finally, start the application.
 
+  Backend:
+
     $ yarn start:dev (For development)
     $ yarn start (For production)
 
-Navigate to http://localhost:8848/api-docs/ to verify installation.
+  Frontend:
 
-## Creating new Migrations and Seeds
+    $ cd front
+    $ ng serve --open
 
-These are the commands to create a new migration and corresponding seed file.
-
-    $ yarn make:migration <name>
-    $ yarn make:seeder <name>
-
-Example,
-
-    $ yarn make:migration create_tags_table
-    $ yarn make:seeder 02_insert_tags
+## Tests
+### BackEnd 
+    $ npm test
+### FrontEnd
+    $ cd front
+    $ ng test
 
 ## Setup Using Docker
+
+### Build Images
+    $ docker build -f Dockerfile --target nginx -t borgius/demo-front .
+    $ docker build -f Dockerfile --target node -t borgius/demo-back .
+
 
 Use [docker-compose](https://docs.docker.com/compose/) to quickly bring up a stack with pre-configured Postgres database container. Data is ephemeral and containers will disappear when stack is removed.
 
@@ -46,8 +51,9 @@ Bring up stack,
 
     $ docker-compose up
 
-Navigate to http://localhost:8848/api-docs/ to verify application is running from docker.
-
 Bring down stack,
 
     $ docker-compose down
+
+
+###### [based on express-api-es6-starter](https://github.com/mesaugat/express-api-es6-starter)
